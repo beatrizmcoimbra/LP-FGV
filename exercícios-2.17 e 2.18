@@ -21,7 +21,7 @@
       (last-pair (cdr lista))))
 
 (define (reverse lista)
-  (if (= (length lista) 1)
-      (car lista)
-      (append (last-pair lista) (list-ref lista (- (length lista) 1)))))
+  (if (empty? lista)
+      lista
+      (append (reverse (cdr lista)) (list (car lista)))))
   
