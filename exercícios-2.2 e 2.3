@@ -1,0 +1,43 @@
+#lang racket
+
+(define (square x) (* x x))
+
+(define (make-point x y)
+  (cons x y))
+
+(define (x-point x y)
+  (car (make-point x y)))
+
+(define (y-point x y)
+  (cdr (make-point x y)))
+
+(define (start-segment x y x1 y1)
+  (make-point x y))
+
+(define (end-segment x y x1 y1)
+  (make-point x1 y1))
+
+(define (make-segment x y x1 y1)
+  (cons (make-point x y) (make-point x1 y1)))
+
+(define (midpoint-segment x y x1 y1)
+  (cons (/ (+ x1 x) 2) (/ (+ y1 y) 2)))
+
+(define (area-2-points x y x1 y1)
+  (cond ((or (= x x1) (= y y1)) 0)
+        ((and (> x1 x) (> y1 y)) (* (- x1 x) (- y1 y)))
+        ((and (> x x1) (> y y1)) (* (- x x1) (- y y1)))
+        ((> x x1) (* (- x x1) (- y1 y)))
+        (else (* (- x1 x) (- y1 y)))))
+
+(define (perimetro-2-points x y x1 y1)
+  (cond ((or (= x x1) (= y y1)) 0)
+        ((and (> x1 x) (> y1 y)) (* 2 (+ (- x1 x) (- y1 y))))
+        ((and (> x x1) (> y y1)) (* 2 (+ (- x x1) (- y y1))))
+        ((> x x1) (* 2 (+ (- x x1) (- y1 y))))
+        (else (* 2 (+ (- x1 x) (- y1 y))))))
+  
+  
+        
+  
+  
